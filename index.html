@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Budget app</title>
+</head>
+
+<body>
+    <nav>
+        <!--Title-->
+        <div class="navdisplay">
+            <div>
+                <img class="logo" src="picture/Logo.png" alt="My Logo">
+            </div>
+            <div class="title">
+                <h1>Budget App</h1>
+            </div>
+        </div>
+        <div class="btn-toggle" id="btn">
+            <div id="btnText" class="btnText">Dark</div>
+            <img src="picture/moon.png" id="btnIcon">
+        </div>
+    </nav>
+    <div class="calculate">
+        <form action="" id="get_budget" class="get_budget">
+
+            <div class="text">please enter your budget</div>
+            <div class="">
+                <input type="number" class="" id="budget_value" placeholder="How many youe expense?">
+            </div>
+            <!-- submit button -->
+            <button type="submit" class="" id="calculate_budget">calculate</button>
+
+
+        </form>
+        <div class="jstf">
+            <div>
+                <h6>BUDGET</h6>
+                <h4 class="budget">
+                    <span>$ </span>
+                    <span id="budget">0</span>
+                </h4>
+            </div>
+
+            <div>
+                <h6>EXPENSES</h6>
+                <h4 class="expense">
+                    <span>$ </span>
+                    <span id="expense">0</span>
+                </h4>
+            </div>
+
+            <div>
+                <h6>BALANCE</h6>
+                <h4 class="balance">
+                    <span>$ </span>
+                    <span id="balance">0</span>
+                </h4>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="addexpense">
+        <form action="" id="get_expense" >
+            <div class="get_expense">
+                <div class="text_expense">please enter your expense</div>
+                <div>
+                    <input type="text" class="" id="expense_list" placeholder="List your expense">
+                </div>
+                <div class="text_expense_amount">please enter expense amount</div>
+                <div class="">
+                    <input type="number" class="" id="expense_value" placeholder="How many your expense amount?">
+                </div>
+                <!-- submit button -->
+                <button type="submit" class="" id="">add expense</button>
+
+            </div>
+
+        </form>
+
+        <div class="expenlist">
+            <div>
+                <h5 class="expenlist_title">expense title</h5>
+                <ul id="expenlist_title" class="expenlist_title">
+                    <hr>
+                </ul>
+            </div>
+            <div>
+                <h5 class="expenlist_value">expense value</h5>
+                <ul id="expenlist_value" class="expenlist_value">
+                    <hr>
+                </ul>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+        let btn = document.getElementById("btn")
+        let btnText = document.getElementById("btnText")
+        let btnIcon = document.getElementById("btnIcon")
+
+        btn.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+
+            if (document.body.classList.contains("dark-theme")) {
+                btnIcon.src = "picture/sun1.png";
+                btnText.innerHTML = "Light";
+            } else {
+                btnIcon.src = "picture/moon.png";
+                btnText.innerHTML = "Dark";
+            }
+        }
+    </script>
+
+    <script>
+        let budget_sum = 0;
+        let balance_sum = 0;
+        let expense_sum = 0;
+
+        document.getElementById("get_budget").addEventListener("submit", (event) => {
+            event.preventDefault()
+            let budget_value = document.getElementById("budget_value").value;
+            let expense_list = document.getElementById("expense_list").value;
+            let expense_value = document.getElementById("expense_value").value;
+            let budget = document.getElementById("budget");
+            let expense = document.getElementById("expense");
+            let balance = document.getElementById("balance");
+            check_empty = true;
+
+            if (isNaN(budget_value) || budget_value.length < 1) {
+                alert("Please enter value budget");
+                check_empty = false;
+                return check_empty
+            } else {
+                if (budget_sum === 0) {
+                    budget_sum = parseInt(budget_value)
+                    balance_sum = budget_sum - expense_sum
+                    budget.innerHTML = budget_sum;
+                    balance.innerHTML = balance_sum;
+                } else {
+                    budget_sum += parseInt(budget_value)
+                    balance_sum = budget_sum - expense_sum
+                    budget.innerHTML = budget_sum;
+                    balance.innerHTML = balance_sum;
+                }
+                document.getElementById("get_budget").reset();
+            }
+
+        })
+
+        document.getElementById("get_expense").addEventListener("submit", (event) => {
+            event.preventDefault()
+            let budget_value = document.getElementById("budget_value").value;
+            let expense_list = document.getElementById("expense_list").value;
+            let expense_value = document.getElementById("expense_value").value;
+            let budget = document.getElementById("budget");
+            let expense = document.getElementById("expense");
+            let balance = document.getElementById("balance");
+            let expenlist_title = document.getElementById("expenlist_title");
+            let expenlist_value = document.getElementById("expenlist_value");
+            let li1 = document.createElement("li")
+            let li2 = document.createElement("li")
+            check_empty = true;
+            if (expense_list.length < 1) {
+                alert("Please enter expense list");
+                check_empty = false;
+                return check_empty
+            }
+            if (expense_value < 1) {
+                alert("Please enter value expense");
+                check_empty = false;
+                return check_empty
+            }
+            else {
+                if (expense_sum === 0) {
+                    expense_sum += parseInt(expense_value)
+                    balance_sum = budget_sum - expense_sum;
+                    balance.innerHTML = balance_sum;
+                    expense.innerHTML = expense_sum;
+                }
+
+                else {
+                    expense_sum += parseInt(expense_value)
+                    expense.innerHTML = expense_sum;
+                    balance_sum = budget_sum - expense_sum;
+                    balance.innerHTML = balance_sum;
+                }
+
+                li1.innerHTML = expense_list;
+                expenlist_title.appendChild(li1)
+                li2.innerHTML = 0 - expense_value;
+                expenlist_value.appendChild(li2)
+
+                document.getElementById("get_expense").reset();
+
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

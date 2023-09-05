@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@600&family=Ysabeau+SC:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@600&family=Caveat:wght@700&family=Ysabeau+SC:wght@300&display=swap');
+:root {
+    --background: #ffffff;
+    --textColor: #17202A;
+    --head: rgb(79, 16, 173);
+    --btnbutton: #17202A;
+    --btntext: #F8F9F9;
+    --mainGreen: #317b22;
+    --mainRed: #b80c09;
+    --mainBlue: #05668d;
+    --textbutton: #fff;
+    --text-expense:MediumVioletRed;
+    --text-expense-amount:rgb(21, 134, 199);
+}
+
+.dark-theme{
+    --background:#17202A;
+    --textColor: #F8F9F9;
+    --head: rgb(215, 185, 17);
+    --btnbutton: #05668d;
+    --btntext: #F8F9F9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Console", "Courier New", monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--textColor);
+    width: 100%;
+    padding: 4% 6% 4% 6%;
+    position: relative;
+    font-size: 20px;
+    text-transform: capitalize;
+    transition: background 0.8s, color 0.8s;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    
+}
+
+.navdisplay {
+    display: flex;  
+}
+
+.title,.title h1{
+    color: var(--head);
+    font-size: 60px;
+    font-weight: bolder;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.text,.text_expense,.text_expense_amount{
+    margin-bottom: 5px;
+}
+
+h1 {
+    color: var(--head);
+    font-size: 40px;
+}
+
+.logo {
+    width: 130px;
+    padding-right: 30px;
+}
+
+.btn-toggle {
+    display: flex;
+    background-color: var(--btnbutton);
+    color: var(--btntext);
+    border-radius: 65px;
+    justify-content: center;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 15px 0 0 0; 
+    transition: background 0.8s, color 0.8s;
+}
+
+.btn-toggle img{
+    margin: 5px;
+}
+
+.btnText{
+    margin: 16px 0 0 15px;
+}
+
+.calculate {
+    display: flex;
+    justify-content: space-between;
+    margin:0 0 20px 0 ;
+}
+
+.get_budget{
+    border: 0.2rem solid var(--mainGreen);
+    padding: 20px;
+    border-radius: 3px;
+    width: 500px;
+}
+
+.calculate button {
+    background: transparent;
+    border: 0.1rem solid var(--mainGreen);
+    color: var(--mainGreen);
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.calculate button:hover {
+    background: var(--mainGreen);
+    border: 0.1rem solid var(--mainGreen);
+    color: var(--textbutton);
+}
+
+.addexpense {
+    display: flex;
+    justify-content: space-between;
+}
+
+.get_expense{
+    display: flexbox;
+    border: 0.2rem solid var(--mainRed);
+    padding: 20px;
+    border-radius: 3px;
+    width: 500px;
+    height: auto;
+}
+
+.addexpense button {
+    background: transparent;
+    border: 0.1rem solid var(--mainRed);
+    color: var(--mainRed);
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.addexpense button:hover {
+    background: var(--mainRed);
+    border: 0.1rem solid var(--mainRed);
+    color: var(--textbutton);
+}
+
+input {
+    width: 80%;
+    height: 40px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    font-weight: lighter;
+}
+
+.jstf{
+    display: flex;
+    width: 800px;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.jstf h6{
+    padding-bottom: 10px;
+}
+
+.budget{
+    color: var(--mainGreen);
+}
+
+.expense{
+    color: var(--mainRed);
+}
+
+.balance{
+    color: var(--btnbutton);
+    transition: background 0.8s, color 0.8s;
+}
+
+.expenlist{
+    display: flex;
+    width: 800px;
+    justify-content: space-evenly;
+    font-size: 23px;
+}
+
+.expenlist ul{
+    padding-top: 5px;
+}
+
+.expenlist li{
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+
+.expenlist_title,.expenlist_title li,.text_expense{
+    color: var(--text-expense);
+}
+
+.expenlist_value,.expenlist_value li,.text_expense_amount {
+    color: var(--text-expense-amount);
+}
+
